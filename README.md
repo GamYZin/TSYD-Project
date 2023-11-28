@@ -1,5 +1,5 @@
- <a href="https://gitee.likeshop.cn/giteemddai">![gitee头图 java.png](https://resource.likeshop.cn/gitee/mddai.png)</a><br>
- <h1 align="center">likeadmin通用管理后台（Java）</h1>
+这是第六组
+
 <h4 align="center">⚡️快速开发、🛠️ 一键生成代码、✅后台多端自适应、📱手机端、🖥️PC（电脑）端前台</h4> 
 <p align="center">
 <a href="https://www.java.com/zh-CN/download/"><img src="https://img.shields.io/badge/JAVA-8-d74f11"> </a><a href="#"> <img src="https://img.shields.io/badge/Spring Boot-2-5ea931"> </a><a href="https://www.tslang.cn/"><img src="https://img.shields.io/badge/TypeScript-3-294e80"></a> <a href="#"><img src="https://img.shields.io/badge/Vue.js-3-4eb883"> </a><a href="#"><img src="https://img.shields.io/badge/vite-2-ffc018"> </a><a href="#"><img src="https://img.shields.io/badge/Element Plus-2-409eff"> </a><a target="_blank" href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker--139cff"></a>
@@ -33,8 +33,7 @@ PC端管理后台：http://127.0.0.1:20222/
 <br>PC端前台：http://127.0.0.1:20223/pc/
 <br>手机端前台：http://127.0.0.1:20223/mobile/
 ### ⚠️注意
-docker快速部署只适合本地部署体验，不熟悉docker请勿用于生产环境，可能造成数据丢失等问题。
-<br>
+
 
 
 ## 👀体验
