@@ -27,5 +27,4 @@ coverage
 *.sw?
 .hbuilderx
 # .env
-.env.development
-.env.production
+
