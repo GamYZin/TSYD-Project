@@ -1,0 +1,90 @@
+@startuml
+
+entity Task {
+  + TaskID {PRIMARY_KEY}
+  - TaskName {ATTRIBUTE}
+  - Description {ATTRIBUTE}
+  - Deadline {ATTRIBUTE}
+  - Priority {ATTRIBUTE}
+}
+
+entity File {
+  + FileID {PRIMARY_KEY}
+  - FileName {ATTRIBUTE}
+  - FileType {ATTRIBUTE}
+  - UploadTime {ATTRIBUTE}
+}
+
+entity User {
+  + UserID {PRIMARY_KEY}
+  - Username {ATTRIBUTE}
+  - Password {ATTRIBUTE}
+  - Email {ATTRIBUTE}
+  - Avatar {ATTRIBUTE}
+}
+
+entity Permission {
+  + PermissionID {PRIMARY_KEY}
+  - PermissionName {ATTRIBUTE}
+}
+
+entity Department {
+  + DepartmentID {PRIMARY_KEY}
+  - DepartmentName {ATTRIBUTE}
+}
+
+entity SystemMessage {
+  + MessageID {PRIMARY_KEY}
+  - MessageContent {ATTRIBUTE}
+  - Sender {ATTRIBUTE}
+  - Timestamp {ATTRIBUTE}
+  - ReadStatus {ATTRIBUTE}
+}
+
+class User_Responsible_For_Task {
+  + UserID {FOREIGN_KEY}
+  + TaskID {FOREIGN_KEY}
+}
+
+class User_Uploads_File {
+  + UserID {FOREIGN_KEY}
+  + FileID {FOREIGN_KEY}
+}
+
+class User_Has_Permission {
+  + UserID {FOREIGN_KEY}
+  + PermissionID {FOREIGN_KEY}
+}
+
+class User_Belongs_To_Department {
+  + UserID {FOREIGN_KEY}
+  + DepartmentID {FOREIGN_KEY}
+}
+
+class Message_Sent_To_User {
+  + MessageID {FOREIGN_KEY}
+  + UserID {FOREIGN_KEY}
+}
+
+class Task_Uploaded_To_File {
+    + TaskID {FOREIGN_KEY}
+    + FileID {FOREIGN_KEY}
+    }
+
+
+User --|{ User_Responsible_For_Task
+User --|{ User_Uploads_File
+User --|{ User_Has_Permission
+User --|{ User_Belongs_To_Department
+
+Task --|{ Task_Uploaded_To_File
+Task_Uploaded_To_File --|{ File
+User_Responsible_For_Task --|{ Task
+User_Uploads_File --|{ File
+User_Has_Permission --|{ Permission
+SystemMessage --|{ Message_Sent_To_User
+User_Belongs_To_Department --|{ Department
+Message_Sent_To_User --|{ User
+
+
+@enduml

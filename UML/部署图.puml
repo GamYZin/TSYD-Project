@@ -1,0 +1,30 @@
+@startuml
+
+!define DATABASE database
+!define NODE node
+!define COMPONENT component
+
+
+
+NODE "Web 服务器" {
+  COMPONENT 小程序服务器
+  DATABASE 数据库服务器 {
+    DATABASE 数据库
+  }
+  COMPONENT 云存储
+}
+
+
+
+NODE "微信平台" {
+  COMPONENT 小程序客户端
+}
+
+"小程序客户端" ..> "小程序服务器" : 请求数据
+"小程序服务器" ..> 数据库 : 查询/更新数据
+"小程序服务器" ..> 云存储 : 存储文件
+"小程序服务器" --> "微信平台" : 返回结果
+"云存储" --> "小程序服务器" : 返回文件
+"数据库" --> "小程序服务器" : 返回数据
+
+@enduml

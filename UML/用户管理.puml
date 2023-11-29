@@ -1,0 +1,45 @@
+@startuml
+class User {
+  - userId: String
+  - username: String
+  - password: String
+  - roles: Set<Role>
+  + viewProfile(): void
+  + editProfile(): void
+}
+
+class Role {
+  - roleId: String
+  - roleName: String
+  - permissions: Set<Permission>
+  + addPermission(permission: Permission): void
+  + removePermission(permission: Permission): void
+}
+
+class Department {
+  - departmentId: String
+  - departmentName: String
+  - members: Set<User>
+  + addMember(user: User): void
+  + removeMember(user: User): void
+}
+
+enum Permission {
+  READ_TASK,
+  CREATE_TASK,
+  EDIT_TASK,
+  DELETE_TASK,
+  READ_FILE,
+  UPLOAD_FILE,
+  DOWNLOAD_FILE,
+  DELETE_FILE,
+  READ_USER,
+  EDIT_USER,
+  READ_DEPARTMENT,
+  EDIT_DEPARTMENT,
+  SEND_NOTIFICATION
+}
+
+User -- Role : has
+User -- Department : belongs to
+@enduml

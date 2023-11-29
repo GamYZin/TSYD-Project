@@ -1,0 +1,60 @@
+@startuml
+
+participant User
+participant TaskManagementModule
+participant Database
+participant NotificationModule
+
+User -> TaskManagementModule: 创建任务
+activate TaskManagementModule
+
+TaskManagementModule -> Database: 保存任务信息
+activate Database
+
+Database --> TaskManagementModule: 保存成功
+deactivate Database
+
+TaskManagementModule -> User: 返回任务创建成功消息
+
+User -> TaskManagementModule: 分配任务给成员
+TaskManagementModule -> Database: 保存任务分配信息
+activate Database
+
+Database --> TaskManagementModule: 保存成功
+deactivate Database
+
+TaskManagementModule -> NotificationModule: 发送任务分配提醒
+activate NotificationModule
+
+NotificationModule --> User: 接收到任务分配提醒
+deactivate NotificationModule
+
+User -> TaskManagementModule: 更新任务进度
+TaskManagementModule -> Database: 保存任务进度信息
+activate Database
+
+Database --> TaskManagementModule: 保存成功
+deactivate Database
+
+TaskManagementModule -> User: 返回任务进度更新成功消息
+
+User -> TaskManagementModule: 上传任务文件
+TaskManagementModule -> Database: 保存文件信息
+activate Database
+
+Database --> TaskManagementModule: 保存成功
+deactivate Database
+
+TaskManagementModule -> User: 返回文件上传成功消息
+
+User -> TaskManagementModule: 添加任务评论
+TaskManagementModule -> Database: 保存评论信息
+activate Database
+
+Database --> TaskManagementModule: 保存成功
+deactivate Database
+
+TaskManagementModule -> User: 返回评论添加成功消息
+
+deactivate TaskManagementModule
+@enduml

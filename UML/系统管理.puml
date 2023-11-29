@@ -1,0 +1,104 @@
+@startuml
+
+class User {
+  -userId: int
+  -username: String
+  -password: String
+  +getUserInfo(): UserInfo
+  +register(): void
+  +logout(): void
+  +updateUserInfo(): void
+}
+
+class Department {
+  -deptId: int
+  -deptName: String
+  +addDepartment(): void
+  +deleteDepartment(): void
+  +getDepartmentInfo(): DepartmentInfo
+  +updateDepartmentInfo(): void
+}
+
+class Permission {
+  -permissionId: int
+  -permissionName: String
+  +grantPermission(): void
+  +revokePermission(): void
+}
+
+class SystemSettings {
+  -theme: String
+  -language: String
+  +configureTheme(): void
+  +configureLanguage(): void
+}
+
+class Log {
+  -logId: int
+  -timestamp: Date
+  -operation: String
+  -userId: int
+  +recordLog(): void
+}
+
+class Notification {
+  -notificationId: int
+  -message: String
+  -userId: int
+  +sendNotification(): void
+}
+
+class SystemManagementModule {
+  +userManager: UserManager
+  +departmentManager: DepartmentManager
+  +permissionManager: PermissionManager
+  +systemSettingsManager: SystemSettingsManager
+  +logManager: LogManager
+  +notificationManager: NotificationManager
+}
+
+class UserManager {
+  +registerUser(): void
+  +logoutUser(): void
+  +getUserInfo(): UserInfo
+  +updateUserInfo(): void
+}
+
+class DepartmentManager {
+  +addDepartment(): void
+  +deleteDepartment(): void
+  +getDepartmentInfo(): DepartmentInfo
+  +updateDepartmentInfo(): void
+}
+
+class PermissionManager {
+  +grantPermission(): void
+  +revokePermission(): void
+}
+
+class SystemSettingsManager {
+  +configureTheme(): void
+  +configureLanguage(): void
+}
+
+class LogManager {
+  +recordLog(): void
+}
+
+class NotificationManager {
+  +sendNotification(): void
+}
+
+class UserInfo {
+  -userId: int
+  -username: String
+  -email: String
+  -phone: String
+}
+
+class DepartmentInfo {
+  -deptId: int
+  -deptName: String
+}
+
+@enduml

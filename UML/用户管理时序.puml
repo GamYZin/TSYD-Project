@@ -1,0 +1,35 @@
+@startuml
+actor 用户
+participant "用户界面" as UI
+participant "用户管理模块" as UMM
+database 数据库
+
+用户 -> UI: 发起修改个人信息请求
+activate UI
+
+UI -> UMM: 请求编辑个人信息
+activate UMM
+
+UMM -> 数据库: 获取用户信息
+activate 数据库
+
+数据库 --> UMM: 用户数据
+deactivate 数据库
+
+UMM -> UI: 显示当前用户信息
+deactivate UMM
+UI -> UMM: 请求修改邮箱和头像
+activate UMM
+
+UMM -> 数据库: 更新邮箱和头像
+activate 数据库
+
+数据库 --> UMM: 更新后的用户数据
+deactivate 数据库
+
+UMM -> UI: 通知修改成功
+deactivate UMM
+UI -> 用户: 显示更新后的用户信息
+deactivate UI
+
+@enduml

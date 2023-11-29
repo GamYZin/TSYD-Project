@@ -1,0 +1,16 @@
+@startuml
+
+actor 用户
+participant "文件上传模块" as UploadModule
+participant "文件下载模块" as DownloadModule
+database 数据库
+
+用户 -> UploadModule: 选择要上传的文件
+UploadModule -> 用户: 文件上传成功
+
+用户 -> DownloadModule: 选择要下载的文件
+DownloadModule -> 数据库: 请求文件下载
+数据库 --> DownloadModule: 发送文件
+DownloadModule --> 用户: 文件下载成功
+
+@enduml

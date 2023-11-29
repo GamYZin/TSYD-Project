@@ -1,0 +1,33 @@
+@startuml
+
+!define RECTANGLE class
+!define INTERFACE interface
+
+RECTANGLE 小程序界面 {
+  登录
+  任务查看
+  文件管理
+}
+
+RECTANGLE 云函数 {
+  任务处理
+  文件操作
+}
+
+RECTANGLE 服务器 {
+  业务逻辑
+}
+
+RECTANGLE 云数据库 {
+  用户数据
+  任务数据
+  文件数据
+}
+
+rectangle "TSYD-OA 系统" {
+  小程序界面 -- 云函数 : HTTP 请求
+  云函数 -- 服务器 : API 调用
+  服务器 -- 云数据库 : 数据库操作
+}
+
+@enduml

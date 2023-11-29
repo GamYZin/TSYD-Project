@@ -1,0 +1,68 @@
+@startuml
+
+!define ENTITY entity
+!define END_ENTITY end entity
+!define ATTRIBUTE attribute
+!define PRIMARY_KEY primary key
+
+ENTITY User {
+  + UserID {PRIMARY_KEY}
+  - Username {ATTRIBUTE}
+  - Password {ATTRIBUTE}
+  - Email {ATTRIBUTE}
+  - Avatar {ATTRIBUTE}
+}
+
+ENTITY Task {
+  + TaskID {PRIMARY_KEY}
+  - TaskName {ATTRIBUTE}
+  - Description {ATTRIBUTE}
+  - Deadline {ATTRIBUTE}
+  - Priority {ATTRIBUTE}
+  + CreatorID {ATTRIBUTE}
+}
+
+ENTITY File {
+  + FileID {PRIMARY_KEY}
+  - FileName {ATTRIBUTE}
+  - FilePath {ATTRIBUTE}
+  - UploadDate {ATTRIBUTE}
+  + TaskID {ATTRIBUTE}
+}
+
+ENTITY SystemMessage {
+  + MessageID {PRIMARY_KEY}
+  - MessageType {ATTRIBUTE}
+  - MessageContent {ATTRIBUTE}
+  - SenderID {ATTRIBUTE}
+  - Timestamp {ATTRIBUTE}
+  - ReadStatus {ATTRIBUTE}
+}
+
+ENTITY Department {
+  + DepartmentID {PRIMARY_KEY}
+  - DepartmentName {ATTRIBUTE}
+}
+
+ENTITY Permission {
+  + PermissionID {PRIMARY_KEY}
+  - PermissionName {ATTRIBUTE}
+}
+
+ENTITY Role {
+  + RoleID {PRIMARY_KEY}
+  - RoleName {ATTRIBUTE}
+}
+
+User --|{ Task
+User --|{ SystemMessage
+User }--|{ Department
+
+Task --|{ File
+Task }--|{ SystemMessage
+
+Department }--|{ User
+
+Permission }--|{ Role
+
+@enduml

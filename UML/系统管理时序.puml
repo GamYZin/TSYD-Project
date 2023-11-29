@@ -1,0 +1,53 @@
+@startuml
+
+actor User
+participant "User Interface" as UI
+participant SystemManagementModule
+participant UserManager
+participant DepartmentManager
+participant PermissionManager
+participant LogManager
+participant NotificationManager
+
+User -> UI: 登录
+activate UI
+
+UI -> SystemManagementModule: 请求系统管理模块
+activate SystemManagementModule
+
+UI -> UserManager: 请求用户注册
+activate UserManager
+UserManager -> UserManager: registerUser()
+UserManager --> UI: 用户注册成功
+deactivate UserManager
+
+UI -> DepartmentManager: 请求添加部门
+activate DepartmentManager
+DepartmentManager -> DepartmentManager: addDepartment()
+DepartmentManager --> UI: 部门添加成功
+deactivate DepartmentManager
+
+UI -> PermissionManager: 请求授予权限
+activate PermissionManager
+PermissionManager -> PermissionManager: grantPermission()
+PermissionManager --> UI: 权限授予成功
+deactivate PermissionManager
+
+
+UI -> LogManager: 请求记录日志
+activate LogManager
+LogManager -> LogManager: recordLog()
+LogManager --> UI: 日志记录成功
+deactivate LogManager
+
+UI -> NotificationManager: 请求发送通知消息
+activate NotificationManager
+NotificationManager -> NotificationManager: sendNotification()
+NotificationManager --> UI: 通知发送成功
+deactivate NotificationManager
+
+deactivate SystemManagementModule
+UI -> User: 退出登录
+deactivate UI
+
+@enduml

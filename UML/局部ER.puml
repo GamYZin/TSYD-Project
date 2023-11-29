@@ -1,0 +1,38 @@
+@startuml
+
+!define ENTITY entity
+!define END_ENTITY end entity
+!define ATTRIBUTE attribute
+!define PRIMARY_KEY primary key
+!define FOREIGN_KEY foreign key
+!define RELATIONSHIP relationship
+!define END_RELATIONSHIP end relationship
+
+ENTITY User {
+  + UserID {PRIMARY_KEY}
+  - Username {ATTRIBUTE}
+  - Password {ATTRIBUTE}
+  - Email {ATTRIBUTE}
+  - Avatar {ATTRIBUTE}
+}
+
+ENTITY Task {
+  + TaskID {PRIMARY_KEY}
+  - TaskName {ATTRIBUTE}
+  - Description {ATTRIBUTE}
+  - Deadline {ATTRIBUTE}
+  - Priority {ATTRIBUTE}
+  - Status {ATTRIBUTE}
+  - CreatedAt {ATTRIBUTE}
+  - UpdatedAt {ATTRIBUTE}
+}
+
+ENTITY User_Assigned_Task {
+  + UserID {FOREIGN_KEY}
+  + TaskID {FOREIGN_KEY}
+}
+
+User --|{ User_Assigned_Task
+Task --|{ User_Assigned_Task
+
+@enduml

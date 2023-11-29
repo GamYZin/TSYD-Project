@@ -1,0 +1,39 @@
+@startuml
+class SystemMessage {
+  - messageId: int
+  - messageType: String
+  - messageContent: String
+  - sender: String
+  - timestamp: DateTime
+  - readStatus: boolean
+  + displayMessage(): void
+}
+
+class DepartmentNotification {
+  - departmentId: int
+  + sendNotification(): void
+}
+
+class TaskReminder {
+  - taskId: int
+  - deadline: DateTime
+  + sendReminder(): void
+}
+
+class FileUploadNotification {
+  - fileId: int
+  + sendUploadNotification(): void
+}
+
+class User {
+  - userId: int
+  - username: String
+  + viewMessages(): void
+}
+
+SystemMessage --|> DepartmentNotification
+SystemMessage --|> TaskReminder
+SystemMessage --|> FileUploadNotification
+User --> SystemMessage
+
+@enduml

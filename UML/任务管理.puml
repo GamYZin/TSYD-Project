@@ -1,0 +1,43 @@
+@startuml
+
+class Task {
+  - taskId: int
+  - taskName: String
+  - description: String
+  - deadline: Date
+  - status: String
+  + createTask(): void
+  + assignTask(user: User): void
+  + trackProgress(): void
+}
+
+class User {
+  - userId: int
+  - username: String
+  - email: String
+  + createUser(): void
+  + viewTask(task: Task): void
+  + commentOnTask(task: Task, comment: Comment): void
+}
+
+class File {
+  - fileId: int
+  - filename: String
+  - fileType: String
+  + uploadFile(task: Task): void
+  + downloadFile(task: Task): void
+  + shareFile(task: Task, user: User): void
+}
+
+class Comment {
+  - commentId: int
+  - content: String
+  + addComment(task: Task, user: User): void
+}
+
+Task --> User: created by
+Task --> User: assigned to
+Task --> File: has files
+Task --> Comment: has comments
+
+@enduml
